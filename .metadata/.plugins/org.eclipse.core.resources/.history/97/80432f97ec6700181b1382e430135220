@@ -1,0 +1,50 @@
+/*
+ * Valve.cpp
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+
+#include "Valve.h"
+
+Valve::Valve() {
+
+	 mraa_init();
+		this->currentPin=0;
+	    this->digPin = mraa_gpio_init(this->currentPin);
+
+	    mraa_gpio_dir(currentPin, MRAA_GPIO_OUT);
+
+}
+
+Valve::Valve(int x) {
+
+			mraa_init();
+			this->currentPin=x;
+		    this->digPin = mraa_gpio_init(this->currentPin);
+
+		    mraa_gpio_dir(digPin, MRAA_GPIO_OUT);
+}
+
+
+void Valve::setOpen(bool x){
+	this->isOpen=x;
+}
+
+
+bool Valve::GetStatus(){
+	return this->isOpen;
+}
+void Valve::Apply(){
+	if(isOpen) {
+		mraa_gpio_write(digPin,1);
+	}else {
+		mraa_gpio_write(digPin,0);
+	}
+}
+
+
+Valve::~Valve() {
+	// TODO Auto-generated destructor stub
+}
+

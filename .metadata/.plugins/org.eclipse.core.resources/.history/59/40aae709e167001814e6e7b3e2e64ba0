@@ -1,0 +1,37 @@
+/*
+ * TemperatureSensor.h
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+
+#ifndef TEMPERATURESENSOR_H_
+#define TEMPERATURESENSOR_H_
+
+#include <mraa/gpio.h>
+#include <mraa.h> // we can delete it afterwards
+#include "Sensor.h"
+#include <stdio.h>
+#include <math.h>
+
+class TemperatureSensor :public Sensor {
+public:
+	TemperatureSensor();
+	TemperatureSensor(int x);
+	virtual ~TemperatureSensor();
+
+	int Getstatus();
+	void Run();
+
+
+private :
+	 	mraa_aio_context   aioPin;           // used as AIO context
+	 	int currentPin=0;
+	    float adcValue;       		  // ADC value read into this variable
+	    float R, temperature;  			 // Used in calculations
+	    int B  = 4275;         // B value for thermistor
+	    int R0 = 100;          // R0 is 100k ohms
+
+};
+
+#endif /* TEMPERATURESENSOR_H_ */

@@ -1,0 +1,32 @@
+/*
+ * Sensor.h
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+#include <mraa.h>
+
+#ifndef SENSOR_H_
+#define SENSOR_H_
+
+class Sensor {
+protected :
+	//int sensorPin=0;
+	//bool directionIn=true;
+public:
+	Sensor();
+	virtual ~Sensor();
+	Sensor(int x,bool y);
+	void SetPin(int x);
+	int GetPin();
+	void SetDirectionIn(bool x);
+	int getDirectionIn();
+	virtual int  GetStatus()=0;
+	virtual void Run()=0;
+    void SetConstraints(int Pin , int Direction);
+
+
+
+};
+
+#endif /* SENSOR_H_ */

@@ -1,0 +1,53 @@
+/*
+ * Sensor.cpp
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+
+#include "Sensor.h"
+
+	int sensorPin=0;
+	bool directionIn=true;
+
+Sensor::Sensor() {
+
+	int sensorPin = 0;
+	bool directionIn = true;
+}
+
+Sensor::Sensor(int x,bool y) {
+
+	sensorPin=x;
+	directionIn=y; // to be debated
+}
+
+void setPin(int x) {
+
+	sensorPin = x;
+}
+
+int getPin() {
+	return sensorPin;
+}
+
+void setDirectionIn(bool x) {
+
+	directionIn = x;
+}
+
+int getDirectionIn() {
+	return directionIn;
+}
+
+virtual int Getstatus()=0;
+virtual void Run() = 0;
+void SetConstraints(int Pin, bool Direction) {
+	sensorPin = Pin;
+	directionIn = Direction;
+}
+
+Sensor::~Sensor() {
+	// TODO Auto-generated destructor stub
+}
+

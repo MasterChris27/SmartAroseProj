@@ -1,0 +1,89 @@
+/*
+ * Button.cpp
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+
+#include "Button.h"
+
+Button::Button() {
+	mraa_init();
+	this->currentPin=0;
+	this->btnPin = mraa_gpio_init(this->currentPin);
+    mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
+}
+
+Button::Button(int x) {
+	mraa_init();
+	this->currentPin=x;
+	this->btnPin = mraa_gpio_init(this->currentPin);
+    mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
+}
+
+
+void Button::SetPin(int x){
+	this->currentPin=x;
+}
+int Button::GetPin(){
+	return this->currentPin;
+}
+int Button::GetStatus(){
+	int prevStatus =status;
+	status=0;
+	return prevStatus;
+}
+
+//will alaways quit after certain nr of sec
+void Button::WaitCommand(int sec){ // doing a loop of few sec to wait the command
+	int i=0;
+	float nr=1000000;// 1 milisecond loop
+	while(1)
+	    {
+		printf("\n btn loop\n");
+
+			while (mraa_gpio_read(btnPin) == 0){
+				i++;
+				usleep(50000);
+
+	       		printf("\n btn waiting to be pushed %d and i %d",sec,i);
+				if(i==sec*10){
+
+		       		printf("\n btn leaves without being pushed\n");
+
+					break;
+				}
+			}
+
+	       if (mraa_gpio_read(btnPin) == 1)
+	       {
+	           /* Step7: Control the LED state based on the button toggle */
+	           if (toggle == 0)
+	           {
+	               status =1;
+
+	       		printf("\n btn pressed\n");
+	               break;
+	           }
+
+	       }
+
+	     //  usleep(nr*1000000);  /* man usleep */
+	       // else: false click, ignore it
+	  //     i++;
+
+		//   if(i==sec/nr)
+
+				printf("\n btn never pressed and bugged\n");
+			   break;
+	    }
+
+
+
+}
+
+
+Button::~Button() {
+	// TODO Auto-generated destructor stub
+}
+

@@ -1,0 +1,16 @@
+
+
+ssh root@id   from poliecopie
+ssh root@10.105.1.55
+password : insainsa
+
+
+
+boza@insa-08125:~/4AE/BEPOO$ scp LCD.C root@10.105.1.55:/root/
+root@edison:/root# g++ LCD.C -lmraa
+
+
+ nano name.c
+ ctrl + o save , enter ctrl+ X for exit
+
+
