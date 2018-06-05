@@ -23,7 +23,9 @@ WaterTank::WaterTank(int valvePin,int waterLevelPin){
 void WaterTank::Arose(int sec){
 	 vlv.setOpen(true);
 	 vlv.Apply();
+	// printf("\n open valve \n");
 	 sleep(sec);
+	// printf("\n closing valve\n");
 	 vlv.setOpen(false);
 	 vlv.Apply();
 }

@@ -56,6 +56,7 @@ void Button::WaitCommand(int sec){ // doing a loop of few sec to wait the comman
 		while (mraa_gpio_read(btnPin) == 0){
 			i++;
 			usleep(50000);
+			//	printf("\n btn waiting to be pushed %d and i %d",sec,i);
 			if(i==sec*10){
 				this->status=0;
 				break;

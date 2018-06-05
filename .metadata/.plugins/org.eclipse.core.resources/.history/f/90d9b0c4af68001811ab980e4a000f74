@@ -66,6 +66,7 @@ void SmartArose::Run(){
 				// modify or add actual water level for the plant here
 				if (plant.GetHumidity()>=HUMID_SOIL){
 
+					//wetingRestrictor--; // if we don't need to wet then we decrease the time
 					printf("\n humidity is good \n\n No need to arose ! id res %d\n",wetingRestrictor);
 					break;
 				}else{

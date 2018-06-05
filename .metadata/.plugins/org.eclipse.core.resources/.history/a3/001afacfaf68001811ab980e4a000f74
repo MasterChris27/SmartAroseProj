@@ -12,6 +12,7 @@
 WaterExistanceSensor::WaterExistanceSensor() : Sensor() {
 
     mraa_init();
+	//this->currentPin=Sensor::GetPin(); // will never get called anyway
 	this->currentPin=0;
     this->digPin = mraa_gpio_init(this->currentPin);
 

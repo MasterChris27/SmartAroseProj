@@ -30,7 +30,7 @@ int Plant::GetWaterExistance(){
 
 	return wES.GetStatus();
 }
-int Plant::GetHumidity(){ // not defined as a unit of measurement
+int Plant::GetHumidity(){ // not defined yet
 
 	return hS.GetStatus();
 

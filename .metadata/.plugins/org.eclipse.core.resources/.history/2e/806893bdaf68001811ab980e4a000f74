@@ -19,7 +19,7 @@ Sensor::Sensor() {
 Sensor::Sensor(int x,bool y) {
 
 	sensorPin=x;
-	directionIn=y;
+	directionIn=y; // to be debated
 }
 
 void SetPin(int x) {
