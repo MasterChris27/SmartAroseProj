@@ -30,7 +30,7 @@ void WaterTank::Arose(int sec){
 	 vlv.Apply();
 }
 
-bool WaterTank::IsValveOpened(){
+bool WaterTank::ValveOpened(){
 	return vlv.GetStatus();
 }
 

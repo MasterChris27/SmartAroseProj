@@ -24,6 +24,7 @@ public:
 	mraa_gpio_context ledPin; // should work
 	int currentPin=0;
 	int status=0;
+	int toggle=0;
 };
 
 #endif /* LED_H_ */

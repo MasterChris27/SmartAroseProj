@@ -96,7 +96,6 @@ void SmartArose::Run(){
 		//	wetingRestrictor=0;
 			printf("\n there is no water in the tank water\n");
 			while(wT.GetWaterLevel()!=EXISTS_WATER){  // we signal all the time that there is no water
-				printf("\n Please add water in the tank \n");
 
 				buzz.Run(1); // we signall
 				led.Run(1);

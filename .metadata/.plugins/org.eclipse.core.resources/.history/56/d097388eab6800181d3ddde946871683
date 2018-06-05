@@ -7,8 +7,7 @@
 
 #include "Sensor.h"
 
-	int sensorPin=0;
-	bool directionIn=true;
+
 
 Sensor::Sensor() {
 
@@ -22,27 +21,27 @@ Sensor::Sensor(int x,bool y) {
 	directionIn=y; // to be debated
 }
 
-void SetPin(int x) {
+void Sensor::SetPin(int x) {
 
 	sensorPin = x;
 }
 
-int GetPin() {
+int Sensor::GetPin() {
 	return sensorPin;
 }
 
-void SetDirectionIn(bool x) {
+void Sensor::SetDirectionIn(bool x) {
 
 	directionIn = x;
 }
 
-int GetDirectionIn() {
+int Sensor::GetDirectionIn() {
 	return directionIn;
 }
 
 //virtual int GetStatus();
 //virtual void Run();
-void SetConstraints(int Pin, bool Direction) {
+void Sensor::SetConstraints(int Pin, bool Direction) {
 	sensorPin = Pin;
 	directionIn = Direction;
 }

@@ -7,13 +7,12 @@
 
 #include "Sensor.h"
 
-	int sensorPin=0;
-	bool directionIn=true;
+
 
 Sensor::Sensor() {
 
-	sensorPin = 0;
-	directionIn = true;
+	int sensorPin = 0;
+	bool directionIn = true;
 }
 
 Sensor::Sensor(int x,bool y) {

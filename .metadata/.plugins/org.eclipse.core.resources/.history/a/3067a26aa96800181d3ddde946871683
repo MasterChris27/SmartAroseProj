@@ -14,7 +14,7 @@ class WaterTank {
 public:
 	WaterTank();
 	WaterTank(int valvePin,int waterLevelPin);
-	bool IsValveOpened();
+	bool ValveOpened();
 	int GetWaterLevel();
 	void Arose(int sec);
 	virtual ~WaterTank();
