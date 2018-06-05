@@ -92,7 +92,7 @@ void SmartArose::Run(){
 				while(plant.GetTemp()<TEMPERATURE_LIMIT){
 					buzz.Run(1);
 					led.Run(1);
-					sleep(DELAY_TEMP_NOTICE);
+					sleep(2);
 				}
 			}
 		}else{

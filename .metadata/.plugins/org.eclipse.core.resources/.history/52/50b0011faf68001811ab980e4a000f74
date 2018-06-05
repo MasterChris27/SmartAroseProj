@@ -12,8 +12,6 @@
 #define HUMIDITY_LIMIT 20 // not defined yet
 #define WET_PERIOD 4
 #define DELAY_BTN 2 // seconds at the end of each loop
-#define DELAY_WATERTANK_NOTICE 3
-#define DELAY_TEMP_NOTICE 2
 #include "SmartArose.h"
 
 SmartArose::SmartArose() { // mention the pins to wich are connected
@@ -92,7 +90,7 @@ void SmartArose::Run(){
 				while(plant.GetTemp()<TEMPERATURE_LIMIT){
 					buzz.Run(1);
 					led.Run(1);
-					sleep(DELAY_TEMP_NOTICE);
+					sleep(2);
 				}
 			}
 		}else{
@@ -103,7 +101,7 @@ void SmartArose::Run(){
 
 				buzz.Run(1); // we signall
 				led.Run(1);
-				sleep(DELAY_WATERTANK_NOTICE);
+				sleep(3);
 			}
 
 			printf("\n The plant thanks you for adding water\n");
