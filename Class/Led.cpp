@@ -27,12 +27,15 @@ Led::Led(int x) {
 void Led::Run(int sec){
 	int i=0;
 	this->status=1;
-	while(i<=sec){
-		mraa_gpio_write(ledPin, 0);
-		sleep(0.5); // half period makes buzz
+	while(i<=sec){ //
 		mraa_gpio_write(ledPin, 1);
+	//	printf("\n wrote 1 in the led Pin\n");
+		usleep(333333);
+		mraa_gpio_write(ledPin, 0);
+		//printf("\n wrote 0 in the led Pin\n");
+		usleep(666667); // 2/3 period lights up
 		i++;
-		sleep(0.5);
+		//printf("\n Iteration %d \n",i);
 	}
 	status=0;
 

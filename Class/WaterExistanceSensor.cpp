@@ -31,6 +31,7 @@ WaterExistanceSensor::WaterExistanceSensor(int x):Sensor(x,true) {
 
 int WaterExistanceSensor::GetStatus(){
 
+	status=mraa_gpio_read(digPin);
 	return status;
 
 }

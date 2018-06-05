@@ -30,6 +30,7 @@ HumiditySensor::HumiditySensor(int x) : Sensor(x,true) {
 
 int HumiditySensor::GetStatus(){
 
+	status = mraa_aio_read(aioPin);
 	return (int)this->status;
 }
 

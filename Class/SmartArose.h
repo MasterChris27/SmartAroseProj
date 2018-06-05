@@ -27,7 +27,10 @@ private :
 	Button btn;
 	Buzzer buzz;
 	Led led;
-private :
+
+	int wetingRestrictor =0;
+
+
     int valvePin=2;//gpio
 
     int waterLevelPin=3;//gpio  					tank

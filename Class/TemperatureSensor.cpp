@@ -29,7 +29,10 @@ TemperatureSensor::TemperatureSensor(int x) : Sensor(x,true) {
 
 
 int TemperatureSensor::GetStatus(){
-
+	adcValue = mraa_aio_read(aioPin);
+	this->R = 1023.0/((float)adcValue)-1.0;    // Promote to float
+	R = 100000.0*R;
+	temperature = 1.0/(log(R/100000.0)/B+1/298.15)-273.15;
 	return (int)(this->temperature);
 }
 

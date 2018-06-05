@@ -1,0 +1,49 @@
+/*
+ * SmartArose.h
+ *
+ *  Created on: 30 mai 2018
+ *      Author: boza
+ */
+
+#ifndef SMARTAROSE_H_
+#define SMARTAROSE_H_
+#include "WaterTank.h"
+#include "Plant.h"
+#include "Button.h"
+#include "Buzzer.h"
+#include "Led.h"
+
+class SmartArose {
+public:
+	SmartArose();
+	virtual ~SmartArose();
+	void Run();
+
+
+private :
+
+	WaterTank wT;
+	Plant plant;
+	Button btn;
+	Buzzer buzz;
+	Led led;
+private :
+
+	int wetingRestrictor =0;
+
+
+    int valvePin=2;//gpio
+
+    int waterLevelPin=3;//gpio  					tank
+    int waterExistPin=4;//gpio // not existant as we use humidity
+
+    int tempPin=0; //aio
+    int humidityPin=1;// AIO  plant
+
+    int buttonPin=6; // gpio
+    int buzzerPin=7; //gpio
+    int ledPin=8;  // gpio
+
+};
+
+#endif /* SMARTAROSE_H_ */

@@ -11,14 +11,14 @@ Button::Button() {
 	mraa_init();
 	this->currentPin=0;
 	this->btnPin = mraa_gpio_init(this->currentPin);
-    mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
+	mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
 }
 
 Button::Button(int x) {
 	mraa_init();
 	this->currentPin=x;
 	this->btnPin = mraa_gpio_init(this->currentPin);
-    mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
+	mraa_gpio_dir(btnPin, MRAA_GPIO_IN);
 }
 
 
@@ -28,57 +28,52 @@ void Button::SetPin(int x){
 int Button::GetPin(){
 	return this->currentPin;
 }
+
 int Button::GetStatus(){
-	int prevStatus =status;
-	status=0;
-	return prevStatus;
+
+	return status;
 }
 
-//will alaways quit after certain nr of sec
+
+void Button::SetStatus(int x){
+
+	this->status=x;
+}
+
+
+
+
+
+//will always quit after certain nr of sec
 void Button::WaitCommand(int sec){ // doing a loop of few sec to wait the command
 	int i=0;
+	this->status=0;
 	float nr=1000000;// 1 milisecond loop
 	while(1)
-	    {
-		printf("\n btn loop\n");
+	{
+		printf("\n Button is waiting for action\n");
 
-			while (mraa_gpio_read(btnPin) == 0){
-				i++;
-				usleep(50000);
-
-	       		printf("\n btn waiting to be pushed %d and i %d",sec,i);
-				if(i==sec*10){
-
-		       		printf("\n btn leaves without being pushed\n");
-
-					break;
-				}
+		while (mraa_gpio_read(btnPin) == 0){
+			i++;
+			usleep(50000);
+			//	printf("\n btn waiting to be pushed %d and i %d",sec,i);
+			if(i==sec*10){
+				this->status=0;
+				break;
 			}
+		}
 
-	       if (mraa_gpio_read(btnPin) == 1)
-	       {
-	           /* Step7: Control the LED state based on the button toggle */
-	           if (toggle == 0)
-	           {
-	               status =1;
+		if (mraa_gpio_read(btnPin) == 1)
+		{
+				this->status=1;
+				printf("\n Button was pressed\n");
+				break;
+		}
 
-	       		printf("\n btn pressed\n");
-	               break;
-	           }
-
-	       }
-
-	     //  usleep(nr*1000000);  /* man usleep */
-	       // else: false click, ignore it
-	  //     i++;
-
-		//   if(i==sec/nr)
-
-				printf("\n btn never pressed and bugged\n");
-			   break;
-	    }
-
-
+		this->status=0;
+		printf("\n Button never pressed\n");
+		break;
+	}
 
 }
 

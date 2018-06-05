@@ -29,13 +29,19 @@ Buzzer::Buzzer(int x) {
 void Buzzer::Run(int sec){
 	int i=0;
 	this->status=1;
+
 	while(i<=sec){
-		mraa_gpio_write(buzzPin, 0);
-		sleep(0.5); // half period makes buzz
+			//	printf("\n wrote 0 in the Buzz Pin\n");
 		mraa_gpio_write(buzzPin, 1);
+		usleep(333333);
+			//	printf("\n wrote 0 in the Buzz Pin\n");
+		mraa_gpio_write(buzzPin, 0);
+			//	printf("\n wrote 1 in the Buzz Pin\n");
+	        //	printf("\n Iteration %d \n",i);
+		usleep(666667);
 		i++;
-		sleep(0.5);
 	}
+
 	status=0;
 
 }

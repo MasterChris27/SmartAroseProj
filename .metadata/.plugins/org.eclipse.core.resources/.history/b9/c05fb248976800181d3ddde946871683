@@ -1,0 +1,68 @@
+/*
+ * Led.cpp
+ *
+ *  Created on: 1 juin 2018
+ *      Author: boza
+ */
+
+#include "Led.h"
+
+Led::Led() {
+	// TODO Auto-generated constructor stub
+
+}
+
+
+
+Led::Led(int x) {
+
+    mraa_init();
+	this->currentPin=x;
+	this->ledPin = mraa_gpio_init(this->currentPin);
+    mraa_gpio_dir(this->ledPin, MRAA_GPIO_OUT);
+
+}
+
+
+void Led::Run(int sec){
+	int i=0;
+	this->status=1;
+	while(i<=sec*15){ //
+		mraa_gpio_write(ledPin, 1);
+
+		printf("\n wrote 1 in the led Pin\n");
+		sleep(500000);
+		mraa_gpio_write(ledPin, 0);
+		printf("\n wrote 0 in the led Pin\n");
+		usleep(1000000); // 2/3 period lights up
+		i++;
+		printf("\n Iteration %d \n",i);
+	}
+	status=0;
+
+}
+
+int Led::GetStatus(){
+
+	return this->status;
+
+}
+
+
+
+void Led::SetPin(int x){
+	this->currentPin=x;
+}
+int Led::GetPin(){
+	return this->currentPin;
+}
+
+
+
+
+
+
+Led::~Led() {
+	// TODO Auto-generated destructor stub
+}
+

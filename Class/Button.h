@@ -18,13 +18,13 @@ public:
 	void SetPin(int x);
 	int GetPin();
 	int GetStatus();
+	void SetStatus(int x);
 
 	void WaitCommand(int y);
 private :
 		mraa_gpio_context btnPin; // should work
 		int currentPin=0;
 		int status=0;
-		int toggle =0;
 
 
 };
